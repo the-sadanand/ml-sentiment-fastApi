@@ -1,0 +1,12 @@
+services:
+  sentiment_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ml-sentiment-api:latest
+    container_name: sentiment_api
+    ports:
+      - "${UVICORN_PORT:-8000}:${UVICORN_PORT:-8000}"
+    env_file:
+      - .env
+    restart: unless-stopped
